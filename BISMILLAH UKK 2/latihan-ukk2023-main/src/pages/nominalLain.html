@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>nominal lain</title>
+</head>
+<body class="bg-[#324154] px-28 py-10 h-[100vh] flex items-center">
+    <div class="container bg-[#597298] h-[100%] rounded-lg flex justify-center items-center">
+        <div class="heading w-8/12 flex flex-col items-center justify-center text-white text-center text-3xl font-mono px-10">
+            <h1>masukan jumlah nominal</h1>
+            <div class="my-10 flex items-center gap-3">
+                <input type="number" id="input" class="text-center rounded-lg" style="width: 45%; height: 50px; color: black;" type="number">
+                <button onclick="transaksi()" class="text-green-300">ENTER >></button>
+                <button onclick
+                ="cancel()" class="text-pink-300">CANCEL >></button>
+            </div>
+            <h1>hanya pecahan 100.000 dan 50.000</h1>
+        </div>
+        <img class="rounded-lg" src="/latihan-ukk2023-main/src/images/ambil-uang.jpg" width="40%" style="margin-bottom: -120px;">
+    </div>
+</body>
+
+<script>
+const input = document.getElementById('input')
+
+let saldo = 1000000
+
+function transaksi() {
+    if (input.value.length > 0) {
+        if (input.value < saldo) {
+            if (input.value % 50000 == 0) {
+                const konfirm = confirm(`Anda akan menarik uang sebesar ${input.value} saldo anda sebesar ${saldo}`)
+                if (konfirm == true) {
+                    location.href = 'ambilKartu.html'
+                    alert(`Sisa saldo anda ${saldo - input.value}`)
+                }
+            } else {
+                alert('nominal tidak sesuai')
+            }
+        } else {
+            alert('Saldo tidak cukup')
+        }
+    } else {
+        alert('nominal tidak boleh kosong')
+    }
+}
+
+function cancel() {
+  location.href = "ambilKartu.html";
+}
+</script>
+</html>

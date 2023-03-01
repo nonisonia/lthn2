@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>pilih nominal</title>
+</head>
+<body class="bg-[#324154] px-28 py-10 h-[100vh] flex items-center">
+    <div class="container bg-[#597298] h-[100%] rounded-lg flex items-center py-10 px-10" style="position: relative; justify-content: start;">
+        <div style="width: 60%;"class="heading w-8/12 flex flex-col items-center justify-center text-white text-center text-3xl font-mono px-10">
+        <h1 style="font-size: 32px;">silahkan pilih paket nominal</h1>
+        <div class="flex text-center" style="gap: 150px; margin-top: 50px;">
+        <div class="flex flex-col" style="gap: 20px;">
+            <button onclick="transaksi(Pengambilan.seratus)"><- 100.000</button>
+            <button onclick="transaksi(Pengambilan.duaratus)"><- 200.000</button>
+            <button onclick="transaksi(Pengambilan.tigaratus)"><- 300.000</button>
+            <a href="nominalLain.html"><- nominal<br/>lain</a>
+        </div>
+        <div class="flex flex-col items-end" style="text-align: center; gap: 20px;">
+            <button onclick="transaksi(Pengambilan.limaratus)">500.000 -></button>
+            <button onclick="transaksi(Pengambilan.satujuta)">1.000.000 -></button>
+            <button onclick="transaksi(Pengambilan.satusetengah)">1.500.000 -></button>
+            <button onclick="transaksilain()"><- transaksi<br/> <span style="margin-left: 35px;">Lain</span></button>
+        </div>
+            <img class="rounded-lg" src="/latihan-ukk2023-main/src/images/ambil-uang.jpg" style="position: absolute; bottom: 0%; right: 0%;">
+        </div>
+        </div>
+    </div>
+</body>
+<script>
+    const Pengambilan ={
+				seratus:100000,
+				duaratus:200000,
+				tigaratus:300000,
+				limaratus:500000,
+				satujuta:1000000,
+				satusetengah:1500000,
+			}
+			let uang = 5000000
+            let newUang
+            alert(`uang tunai Anda ${uang}`)
+			function transaksi(value) {
+				if (uang < value) {
+					alert("Saldo Anda Kurang")
+		
+				} else {
+					newUang = uang - value
+                    uang = newUang
+                    const valueuang = confirm(`Anda Berhasil Menarik Saldo ${value} Sisa Saldo Anda ${uang}`)
+				}
+			} 
+            function transaksilain() {
+                const konfir = confirm ('Fitur tidak tersedia, Apakah anda ingin membatalkan ? ')
+                if (konfir) {
+                    location.href = 'ambilKartu.html'
+                }
+            }
+</script>
+</html>
